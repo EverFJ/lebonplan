@@ -9,6 +9,7 @@ const {
     PORT,
     URI
 } = process.env
+const productsRoutes = require("./routes/products")
 
 const userModel = require("./models/User");
 const productModel = require('./models/Product');
@@ -19,7 +20,7 @@ app.use(express.urlencoded({
     extended: false
 }))
 
-// userModel.insertMany()
+app.use("/products", productsRoutes)
 
 mongoose.connect(URI, (err) => {
     if (err) {
