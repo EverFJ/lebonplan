@@ -3,8 +3,11 @@ const User = require("../models/User")
 
 const getUserPage = (req, res) => {
     User.findOne({
-        _id: req.params.id
-    })
+            _id: req.params.id
+        })
+        .then()
+        .catch()
+
 }
 const handleSignup = (req, res) => {
     const user = new User({
