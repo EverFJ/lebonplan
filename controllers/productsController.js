@@ -32,7 +32,26 @@ const getOneProduct = (req, res) => {
         })
 }
 
+const getProductsFromCity = (req, res) => {
+    Product.find({
+            city: req.params.city
+        })
+        .then(products => {
+            res.status(200).json({
+                products
+            })
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(500).json({
+                err
+            })
+        })
+
+}
+
 module.exports = {
     getAllProducts,
-    getOneProduct
+    getOneProduct,
+    getProductsFromCity
 }
