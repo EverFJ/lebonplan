@@ -10,6 +10,11 @@ const {
     URI
 } = process.env
 const productsRoutes = require("./routes/products")
+const adminRoutes = require("./routes/admin")
+const usersRoutes = require("./routes/users")
+
+const userModel = require("./models/User");
+const productModel = require('./models/Product');
 
 app.use(cors())
 app.use(express.json())
@@ -17,7 +22,9 @@ app.use(express.urlencoded({
     extended: false
 }))
 
+app.use("/users", usersRoutes)
 app.use("/products", productsRoutes)
+app.use("/admin", adminRoutes)
 
 mongoose.connect(URI, (err) => {
     if (err) {
