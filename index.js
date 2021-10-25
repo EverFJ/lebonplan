@@ -10,11 +10,16 @@ const {
     URI
 } = process.env
 
+const userModel = require("./models/User");
+const productModel = require('./models/Product');
+
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
+
+// userModel.insertMany()
 
 mongoose.connect(URI, (err) => {
     if (err) {
