@@ -38,6 +38,11 @@ const getProductsFromCity = (req, res) => {
             city: req.params.city
         })
         .then(products => {
+            if (products.length === 0) {
+                res.status(200).json({
+                    message: "No products from " + req.params.city
+                })
+            }
             res.status(200).json({
                 products
             })
