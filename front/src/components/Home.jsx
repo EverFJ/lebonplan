@@ -31,8 +31,14 @@ export default function Home(props) {
         price: price ? price : 0,
       }),
     })
-      .then(res => res.json())
-      .then(data => setProducts(data));
+      .then(res => {
+        console.log(`res`, res);
+        return res.json();
+      })
+      .then(data => {
+        console.log(`data`, data);
+        return setProducts(data);
+      });
   };
 
   return (

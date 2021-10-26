@@ -16,8 +16,8 @@ const getAllProducts = (req, res) => {
 
 const HandleSearchedProducts = (req, res) => {
     Product.find({
-            name: req.body.name,
-            city: req.body.city,
+            // name: req.body.name,
+            // city: req.body.city,
             price: {
                 $lte: req.body.price
             }
