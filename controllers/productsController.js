@@ -53,11 +53,33 @@ const getProductsFromCity = (req, res) => {
                 err
             })
         })
+}
 
+const getProductsFromName = (req, res) => {
+    Product.find({
+            name: req.params.name
+        })
+        .then(products => {
+            if (products.length === 0) {
+                res.status(200).json({
+                    message: "No products corresponding to " + req.params.name
+                })
+            }
+            res.status(200).json({
+                products
+            })
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(500).json({
+                err
+            })
+        })
 }
 
 module.exports = {
     getAllProducts,
     getOneProduct,
-    getProductsFromCity
+    getProductsFromCity,
+    getProductsFromName
 }
