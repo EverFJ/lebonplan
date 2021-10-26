@@ -1,7 +1,10 @@
 const mongoose = require("mongoose")
 const Product = require("../models/Product")
 
-const getAllProducts = (req, res) => {
+const getSearchedProducts = (req, res) => {
+    let name = req.query.params.name ? req.query.params.name : null
+    let city = req.query.params.city ? req.query.params.city : null
+    let price = req.query.params.price ? req.query.params.price : null
     Product.find()
         .then(products => {
             res.status(200).json({
@@ -14,8 +17,9 @@ const getAllProducts = (req, res) => {
                 err
             })
         })
-
 }
+
+
 const getOneProduct = (req, res) => {
     Product.findOne({
             _id: req.params.id
@@ -78,7 +82,7 @@ const getProductsFromName = (req, res) => {
 }
 
 module.exports = {
-    getAllProducts,
+    getSearchedProducts,
     getOneProduct,
     getProductsFromCity,
     getProductsFromName
