@@ -1,11 +1,20 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Home</h1>
-      </div>
-    );
-  }
+export default function Home(props) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("/products")
+      .then(res => res.json())
+      .then(data => {
+        console.log("fetch data", data);
+        return setProducts(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
 }
