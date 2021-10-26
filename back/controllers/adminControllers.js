@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const Product = require("../models/Product")
 
 const createProduct = (req, res) => {
+    console.log(`req.body`, req.body)
     const product = new Product({
         ...req.body
     })
