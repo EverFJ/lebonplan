@@ -1,28 +1,27 @@
-import logo from "./logo.svg";
+// Librarys
+import React, { Component } from "react";
 import "./App.css";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Admin from "./components/Admin";
-import Profil from "./components/Profil";
-import Signup from "./components/Signup";
-import Error404 from "./components/Error404";
 
-function App() {
-  return (
-    <div className="App">
-      <div className="registerconteiner">
-        <h1 className="Signup">Signup</h1>
-        <form className="Signup-register">
-        <input
-          className="TextInput"
-          type="text"
-          name="name"
-          placeholder="Name"
-        />
-      </form>
+// Componants
+import Home from "../../components/Home";
+import Login from "../../components/Login";
+import Admin from "../../components/Admin";
+import Profil from "../../components/Profil";
+import Signup from "../../components/Signup";
+import Error404 from "../../components/Error404";
+
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Bienvenue sur le bon plan</h1>
+        <Home></Home>
+        <Login></Login>
+        <Admin></Admin>
+        <Profil></Profil>
+        <Signup></Signup>
+        <Error404></Error404>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
-export default App;
