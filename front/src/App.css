@@ -1,0 +1,52 @@
+input:focus {
+    outline: none;
+}
+
+.App {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerconteiner {
+    width: 600px;
+    height: 600px;
+    padding: 100px;
+    background-color: rgba(19, 19, 31, 0.918);
+    box-shadow: 0 px 10 px 30 px 0 px rgb(36, 24, 43);
+}
+
+.Signup {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.Signup-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TextInput {
+    height: 40px;
+    padding-left: 10px;
+    margin-bottom: 30px;
+    align-self: stretch;
+
+    font-family: "open Sans", sans-serif;
+    color: whitesmoke;
+    background-color: transparent;
+
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(107, 97, 97);
+}
+
+.TextInput::placeholder {
+    color: rgb(105, 100, 100);
+    font-family: "open Sans", sans-serif;
+}
