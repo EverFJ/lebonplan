@@ -2,14 +2,14 @@ const mongoose = require("mongoose")
 const Product = require("../models/Product")
 
 const getSearchedProducts = (req, res) => {
-    let name = req.query.params.name ? req.query.params.name : null
-    let city = req.query.params.city ? req.query.params.city : null
-    let price = req.query.params.price ? req.query.params.price : null
+    let name = req.query.params.name ? req.query.params.name.toLowercase() : null
+    let city = req.query.params.city ? req.query.params.city.toLowercase() : null
+    let price = req.query.params.price ? parseInt(req.query.params.price) : null
     Product.find({
-            name: name.toLowercase(),
-            city: city.toLowercase(),
+            name: name,
+            city: city,
             price: {
-                $lte: parseInt(price)
+                $lte: price
             }
         })
         .then(products => {
