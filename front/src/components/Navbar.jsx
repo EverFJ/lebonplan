@@ -6,7 +6,7 @@ export default class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="#">
             Le Bon Plan
           </Link>
           <button
@@ -23,27 +23,27 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" to="/Home">
+                <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Login">
+                <Link className="nav-link" to="/users/login">
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Profil">
+                <Link className="nav-link" to="/users/1">
                   Profil
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Admin">
+                <Link className="nav-link" to="/admin">
                   Admin
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Signup">
+                <Link className="nav-link" to="/users/signup">
                   Signup
                 </Link>
               </li>

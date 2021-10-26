@@ -5,8 +5,17 @@ const getUserPage = (req, res) => {
     User.findOne({
             _id: req.params.id
         })
-        .then()
-        .catch()
+        .then(user => {
+            res.status(200).json({
+                user
+            })
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(500).json({
+                error: err
+            })
+        })
 
 }
 const handleSignup = (req, res) => {
