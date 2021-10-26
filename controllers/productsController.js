@@ -6,14 +6,14 @@ const getSearchedProducts = (req, res) => {
     let city = req.query.params.city ? req.query.params.city : null
     let price = req.query.params.price ? req.query.params.price : null
     Product.find({
-            name: name,
-            city: city,
+            name: name.toLowercase(),
+            city: city.toLowercase(),
             price: {
-                $lte: price
+                $lte: parseInt(price)
             }
         })
         .then(products => {
-            if (product.length === 0) {
+            if (products.length === 0) {
                 res.status(200).json({
                     message: "No products matching your search"
                 })
