@@ -2,16 +2,29 @@ import React, { useState, useEffect } from "react";
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
+  const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8000/products")
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
-  console.log(`products`, products);
+
+  // console.log(`products`, products);
+
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    fetch("http://localhost:8000/products", {
+      method: "POST",
+    })
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  };
+
   return (
     <>
-      <h1>Home</h1>
       <form action="/products" method="post">
         <div className="row m-4">
           <div className="col-4">
@@ -20,13 +33,18 @@ export default function Home(props) {
               type="text"
               name="name"
               placeholder="Search for a particular product"
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
+            {/* <label className="form-label">Product</label> */}
           </div>
           <div className="col-3">
             <select
               className="form-select"
               aria-label="select your city"
               name="city"
+              value={city}
+              onChange={e => setCity(e.target.value)}
             >
               <option value="" disabled>
                 Select your city
@@ -35,6 +53,7 @@ export default function Home(props) {
               <option value="lyon">Lyon</option>
               <option value="marseille">Marseille</option>
             </select>
+            {/* <label className="form-label">City</label> */}
           </div>
           <div className="col-3">
             <input
@@ -42,8 +61,17 @@ export default function Home(props) {
               type="text"
               name="price"
               placeholder="Enter your maximum price"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
             />
-            <button className="btn btn-primary m-4" type="submit">
+            {/* <label className="form-label">Price</label> */}
+          </div>
+          <div className="col-2">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              onClick={handleSearchSubmit}
+            >
               Search
             </button>
           </div>
