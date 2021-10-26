@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
+// import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
 import Profil from "./components/Profil";
