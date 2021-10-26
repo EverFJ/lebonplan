@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
-
+app.use(express.static("public"))
 app.use("/users", usersRoutes)
 app.use("/products", productsRoutes)
 app.use("/admin", adminRoutes)

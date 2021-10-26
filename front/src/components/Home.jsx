@@ -12,7 +12,7 @@ export default function Home(props) {
       .then(data => setProducts(data));
   }, []);
 
-  // console.log(`products`, products);
+  console.log(`products`, products);
 
   const handleSearchSubmit = e => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function Home(props) {
   };
 
   return (
-    <>
+    <div className="container">
       <form action="/products" method="post">
         <div className="row m-4">
           <div className="col-4">
@@ -80,15 +80,20 @@ export default function Home(props) {
       <p>{products.length} produits en vente</p>
       <ul>
         {products.length !== 0 &&
-          products.map(product => (
-            <li>
-              <p>Produit : {product.name}</p>
-              <p>Ville : {product.city}</p>
-              <p>Prix : {product.price}</p>
+          products.map(({ _id, name, city, price, description, image }) => (
+            <li key={_id}>
+              <h1>Produit : {name}</h1>
+              <h2>Ville : {city}</h2>
+              <h3>Prix : {price}</h3>
+              <p>{description}</p>
+              <img
+                style={{ width: "500px" }}
+                src={image}
+                alt="image du produit"
+              />
             </li>
           ))}
       </ul>
-      ;
-    </>
+    </div>
   );
 }
