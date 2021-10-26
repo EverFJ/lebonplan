@@ -15,12 +15,6 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Bienvenue sur le bon plan</h1>
-        <Home></Home>
-        <Login></Login>
-        <Admin></Admin>
-        <Profil></Profil>
-        <Signup></Signup>
-        <Error404></Error404>
       </div>
     );
   }
