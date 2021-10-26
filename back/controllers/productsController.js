@@ -23,11 +23,11 @@ const HandleSearchedProducts = (req, res) => {
             }
         })
         .then(products => {
-            if (products.length === 0) {
-                res.status(200).json({
-                    message: "No products matching your search"
-                })
-            }
+            // if (products.length === 0) {
+            //     res.status(200).json({
+            //         message: "No products matching your search"
+            //     })
+            // }
             res.status(200).json(products)
         })
         .catch(err => {

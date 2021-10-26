@@ -4,7 +4,7 @@ export default function Home(props) {
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:8000/products")
@@ -12,12 +12,24 @@ export default function Home(props) {
       .then(data => setProducts(data));
   }, []);
 
-  // console.log(`products`, products);
+  console.log(`products`, products);
 
   const handleSearchSubmit = e => {
+    console.log(`name`, name);
+    console.log(`city`, city);
+    console.log(`price`, price);
     e.preventDefault();
     fetch("http://localhost:8000/products", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       method: "POST",
+      body: JSON.stringify({
+        name: name ? name : "",
+        city: city ? city : "",
+        price: price ? price : 0,
+      }),
     })
       .then(res => res.json())
       .then(data => setProducts(data));
@@ -58,7 +70,7 @@ export default function Home(props) {
           <div className="col-3">
             <input
               className="form-control"
-              type="text"
+              type="number"
               name="price"
               placeholder="Enter your maximum price"
               value={price}
@@ -69,7 +81,7 @@ export default function Home(props) {
           <div className="col-2">
             <button
               className="btn btn-primary"
-              type="submit"
+              type="button"
               onClick={handleSearchSubmit}
             >
               Search
@@ -79,7 +91,7 @@ export default function Home(props) {
       </form>
       <p>{products.length} produits en vente</p>
       <ul>
-        {products.length !== 0 &&
+        {products &&
           products.map(product => (
             <li>
               <p>Produit : {product.name}</p>
