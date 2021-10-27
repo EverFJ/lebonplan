@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductCard from "./ProductCard";
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
@@ -49,7 +50,7 @@ export default function Home(props) {
   };
 
   return (
-    <>
+    <div className="container">
       <form action="/products" method="post">
         <div className="row m-4">
           <div className="col-4">
@@ -103,17 +104,11 @@ export default function Home(props) {
         </div>
       </form>
       <p>{products.length} produits en vente</p>
-      <ul>
-        {products &&
-          products.map(product => (
-            <li>
-              <p>Produit : {product.name}</p>
-              <p>Ville : {product.city}</p>
-              <p>Prix : {product.price}</p>
-            </li>
-          ))}
-      </ul>
-      ;
-    </>
+
+      <div className="d-flex justify-content-center">
+        {products.length !== 0 &&
+          products.map(product => <ProductCard product={product} />)}
+      </div>
+    </div>
   );
 }

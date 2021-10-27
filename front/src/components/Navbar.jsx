@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+     
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand" to="/">
             Le Bon Plan
           </Link>
           <button
@@ -23,6 +24,7 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
+
                 <Link className="nav-link" to="/">
                   Home
                 </Link>
@@ -33,7 +35,7 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users/1">
+                <Link className="nav-link" to="/users/:id">
                   Profil
                 </Link>
               </li>
