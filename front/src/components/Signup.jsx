@@ -66,7 +66,7 @@ export default class Signup extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-cyan-900 btn-lg btn-block">
+          <button type="button" className="btn btn-cyan-900 btn-lg btn-block">
             Register
           </button>
         </form>
