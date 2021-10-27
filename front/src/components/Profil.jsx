@@ -6,22 +6,25 @@ export default function Profil(props) {
   const apiUrl = "http://localhost:8000";
 
   useEffect(() => {
-    fetch(apiUrl + "/products/" + id)
+    fetch(apiUrl + "/users/" + id)
       .then(res => res.json())
       .then(data => setUser(data));
   }, []);
 
   console.log(`PROFILE.JSX user`, user);
   const { firstName, surName, userName, email, profileImage } = user;
-  return (
-    <div>
-      <h1>Profil</h1>
-      <h2>
-        {firstName} {surName}
-      </h2>
-      <p>Username: {userName}</p>
-      <p>email: {email}</p>
-      <img src={apiUrl + profileImage} alt={`${userName} picture`} />
-    </div>
-  );
+
+  if (user) {
+    return (
+      <div className="m-4">
+        <h1>Profil</h1>
+        <h2>
+          {firstName} {surName}
+        </h2>
+        <p>Username: {userName}</p>
+        <p>email: {email}</p>
+        <img src={apiUrl + profileImage} alt={`${userName} picture`} />
+      </div>
+    );
+  }
 }

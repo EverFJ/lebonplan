@@ -6,9 +6,7 @@ const getUserPage = (req, res) => {
             _id: req.params.id
         })
         .then(user => {
-            res.status(200).json({
-                user
-            })
+            res.status(200).json(user)
         })
         .catch(err => {
             console.error(err)
