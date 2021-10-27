@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductCard from "./ProductCard";
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
@@ -78,22 +79,10 @@ export default function Home(props) {
         </div>
       </form>
       <p>{products.length} produits en vente</p>
-      <ul>
+      <div className="d-flex justify-content-center">
         {products.length !== 0 &&
-          products.map(({ _id, name, city, price, description, image }) => (
-            <li key={_id}>
-              <h1>Produit : {name}</h1>
-              <h2>Ville : {city}</h2>
-              <h3>Prix : {price}</h3>
-              <p>{description}</p>
-              <img
-                style={{ width: "500px" }}
-                src={image}
-                alt="image du produit"
-              />
-            </li>
-          ))}
-      </ul>
+          products.map(product => <ProductCard product={product} />)}
+      </div>
     </div>
   );
 }
