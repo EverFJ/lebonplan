@@ -15,13 +15,21 @@ const getAllProducts = (req, res) => {
 }
 
 const HandleSearchedProducts = (req, res) => {
-    Product.find({
-            name: req.body.name,
-            city: req.body.city,
-            price: {
-                $lte: req.body.price
-            }
-        })
+    let searchRequest = {}
+    if (req.body.name) {
+        searchRequest.name = req.body.name
+    }
+    if (req.body.city) {
+        searchRequest.city = req.body.city
+    }
+    if (req.body.price) {
+        {
+            $lte: req.body.price
+        }
+
+    }
+
+    Product.find(searchRequest)
         .then(products => {
             if (products.length === 0) {
                 res.status(200).json({
