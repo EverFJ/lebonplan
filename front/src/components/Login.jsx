@@ -4,47 +4,34 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1>Login</h1>
-        <form class="dropdown-menu p-4">
-          <div className="mb-3">
-            <label for="exampleDropdownFormEmail2" class="form-label">
-              email
-            </label>
+        <form>
+          <h1>Log in</h1>
+
+          <div className="form-group">
+            <label>Email adress</label>
             <input
               type="email"
-              class="form-control"
-              id="exampleDropdownFormEmail2"
-              placeholder="email@example.com"
+              className="form-control"
+              placeholder="Enter your email"
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleDropdownFormPassword2" class="form-label">
-              Mot de passe
-            </label>
+
+          <div className="form-group">
+            <label>Password</label>
             <input
               type="password"
-              class="form-control"
-              id="exampleDropdownFormPassword2"
-              placeholder="Password"
+              className="form-control"
+              placeholder="Enter your password"
             />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="dropdownCheck2"
-              />
-              <label class="form-check-label" for="dropdownCheck2">
-                se souvenir de moi
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">
-            Se connecter
+          <button type="submit" className="btn-cyan-900 btn-lg btn-block">
+            Sign in
           </button>
         </form>
       </div>
+
+      // Sofiane => Team Denicheurs / je pense a ajouter : si vous validez ;-)
+      // un input type checkbox "remember me" et un petit P "forgot password ?"
     );
   }
 }

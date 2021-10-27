@@ -33,7 +33,7 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/profil">
+                <Link className="nav-link" to="/users/:id">
                   Profil
                 </Link>
               </li>
@@ -43,7 +43,7 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/signup">
+                <Link className="nav-link" to="/users/signup">
                   Signup
                 </Link>
               </li>
