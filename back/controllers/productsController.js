@@ -20,14 +20,14 @@ const HandleSearchedProducts = (req, res) => {
         searchRequest.name = req.body.name.toLowerCase()
     }
     if (req.body.city) {
-        searchRequest.city = req.body.city.toLowerCase()
+        searchRequest.city = req.body.city
     }
     if (req.body.price !== 0) {
         searchRequest.price = {
             $lte: req.body.price
         }
     }
-    console.log(`object`, object)
+    console.log(`searchRequest`, searchRequest)
     Product.find(searchRequest)
         .then(products => {
             if (products.length === 0) {
