@@ -6,24 +6,29 @@ export default class Login extends Component {
     this.state = { email: "", password: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ email: e.target.value });
-    console.log(e.target.value);
+    const apiUrl = "http://localhost:8000";
   }
 
   handleSubmit(e) {
-    alert("email submitted :" + this.state.value);
     e.preventDefault();
-    // console.log(e);
+    fetch("http://localhost:8000" + "/users/login", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    });
   }
 
   render() {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <h1>Log in</h1>
+          <h1>Login</h1>
 
           <div className="form-group">
             <label>Email adress</label>
@@ -33,7 +38,7 @@ export default class Login extends Component {
               className="form-control"
               placeholder="Enter your email"
               value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
+              onChange={e => this.setState({ email: e.target.value })}
             />
           </div>
 
@@ -45,7 +50,7 @@ export default class Login extends Component {
               className="form-control"
               placeholder="Enter your password"
               value={this.state.password}
-              onChange={(e) => this.setState({ password: e.target.value })}
+              onChange={e => this.setState({ password: e.target.value })}
             />
           </div>
           <button type="button" className="btn-cyan-900 btn-lg btn-block">
