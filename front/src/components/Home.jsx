@@ -93,12 +93,15 @@ export default function Home(props) {
           </div>
         </div>
       </form>
-      <p>{products.length} produits en vente</p>
-
-      <div className="d-flex justify-content-center">
-        {products.length !== 0 &&
-          products.map(product => <ProductCard product={product} />)}
-      </div>
+      {products && products.length !== 0 && (
+        <>
+          <p>{products.length} produits en vente</p>
+          <div className="d-flex justify-content-center">
+            {products.length !== 0 &&
+              products.map(product => <ProductCard product={product} />)}
+          </div>
+        </>
+      )}
     </div>
   );
 }
