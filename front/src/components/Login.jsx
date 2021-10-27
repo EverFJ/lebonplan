@@ -24,8 +24,8 @@ export default class Login extends Component {
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" className="btn-cyan-900 btn-lg btn-block">
-            Sign in
+          <button type="button" className="btn-cyan-900 btn-lg btn-block">
+            Login
           </button>
         </form>
       </div>
