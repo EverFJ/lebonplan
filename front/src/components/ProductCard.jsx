@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {
   const { _id, name, city, price, description, image } = props.product;
@@ -10,6 +11,9 @@ export default function ProductCard(props) {
         <p className="card-text mt-2">{description}</p>
       </div>
       <img className="card-img-top" src={image} alt={`${name} image`} />
+      <Link to="/products/:id">
+        <button className="btn btn-primary">More Info</button>
+      </Link>
     </div>
   );
 }

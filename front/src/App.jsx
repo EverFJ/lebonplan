@@ -8,6 +8,7 @@ import Admin from "./components/Admin";
 import Profil from "./components/Profil";
 import Signup from "./components/Signup";
 import Error404 from "./components/Error404";
+import ProductPage from "./components/ProductPage";
 
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/users/signup" component={Signup} />
         <Route exact path="/admin" component={Admin} />
         <Route path="/users/:id" component={Profil} />
+        <Route path="/products/:id" component={ProductPage} />
         <Route path="*" component={Error404} />
       </Switch>
     </BrowserRouter>
