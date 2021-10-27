@@ -11,7 +11,7 @@ export default function ProductCard(props) {
         <p className="card-text mt-2">{description}</p>
       </div>
       <img className="card-img-top" src={image} alt={`${name} image`} />
-      <Link to="/products/:id">
+      <Link to={`/products/${_id}`}>
         <button className="btn btn-primary">More Info</button>
       </Link>
     </div>

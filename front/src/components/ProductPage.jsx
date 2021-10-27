@@ -8,18 +8,19 @@ export default function ProductPage(props) {
       .then(res => res.json())
       .then(data => setProduct(data));
   }, []);
-  const { title, description, price, sellerUsername, city, image } = product;
+  console.log(`product`, product);
+  const { name, description, price, sellerUsername, city, image } = product;
   return (
     <div className="container">
       {product && (
-        <>
-          <h1>{title}</h1>
-          <p>{description}</p>
+        <div className="m-4">
+          <h1>{name}</h1>
           <h2>{price}€</h2>
-          <h3>Seller : {sellerUsername}</h3>
+          <h3>Seller : {sellerUsername ? sellerUsername : "Unknown"}</h3>
           <h4>From : {city}</h4>
-          <img src={image} alt={`${title} image`} />
-        </>
+          <p>{description}</p>
+          <img src={image} alt={`${name} image`} />
+        </div>
       )}
     </div>
   );
