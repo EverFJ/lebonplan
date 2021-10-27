@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductPage(props) {
   const [product, setProduct] = useState([]);
+
   useEffect(() => {
     const id = props.match.params.id;
     fetch("http://localhost:8000/products/" + id)
@@ -11,6 +12,8 @@ export default function ProductPage(props) {
   }, []);
   console.log(`product`, product);
   const { name, description, price, sellerUsername, city, image } = product;
+  const apiUrl = "http://localhost:8000";
+
   return (
     <div className="container">
       {product && (
@@ -20,7 +23,7 @@ export default function ProductPage(props) {
           <h3>Seller : {sellerUsername ? sellerUsername : "Unknown"}</h3>
           <h4>From : {city}</h4>
           <p>{description}</p>
-          <img src={image} alt={`${name} image`} />
+          <img src={apiUrl + image} alt={`${name} image`} />
         </div>
       )}
       <Link to="/">

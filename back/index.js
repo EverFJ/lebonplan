@@ -12,6 +12,7 @@ const {
 const productsRoutes = require("./routes/products")
 const adminRoutes = require("./routes/admin")
 const usersRoutes = require("./routes/users")
+const path = require("path")
 
 const userModel = require("./models/User");
 const productModel = require('./models/Product');
@@ -21,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
-app.use(express.static("public"))
+app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/users", usersRoutes)
 app.use("/products", productsRoutes)
 app.use("/admin", adminRoutes)
