@@ -4,14 +4,19 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { email: "", password: "" };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      email: "",
+      password: "",
+      user: { userId: "", token: "" },
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     const apiUrl = "http://localhost:8000";
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(`this.state.email`, this.state.email);
+    console.log(`this.state.password`, this.state.password);
     fetch("http://localhost:8000" + "/users/login", {
       headers: {
         Accept: "application/json",
@@ -22,7 +27,10 @@ export default class Login extends Component {
         email: this.state.email,
         password: this.state.password,
       }),
-    });
+    })
+      .then(res => res.json())
+      .then(data => this.setState({ user: { data } }))
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -54,7 +62,7 @@ export default class Login extends Component {
               onChange={(e) => this.setState({ password: e.target.value })}
             />
           </div>
-          <button type="button" className="btn-cyan-900 btn-lg btn-block">
+          <button type="submit" className="btn-cyan-900 btn-lg btn-block">
             Login
           </button>
         </form>
