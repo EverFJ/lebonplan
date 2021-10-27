@@ -15,27 +15,26 @@ const getAllProducts = (req, res) => {
 }
 
 const HandleSearchedProducts = (req, res) => {
-
     let searchRequest = {}
     if (req.body.name) {
         searchRequest.name = req.body.name.toLowerCase()
     }
     if (req.body.city) {
-        searchRequest.city = req.body.city
+        searchRequest.city = req.body.city.toLowerCase()
     }
-    if (req.body.price) {
-        {
+    if (req.body.price !== 0) {
+        searchRequest.price = {
             $lte: req.body.price
         }
     }
+    console.log(`object`, object)
     Product.find(searchRequest)
-
         .then(products => {
-            // if (products.length === 0) {
-            //     res.status(200).json({
-            //         message: "No products matching your search"
-            //     })
-            // }
+            if (products.length === 0) {
+                res.status(200).json({
+                    message: "No products matching your search"
+                })
+            }
             res.status(200).json(products)
         })
         .catch(err => {
