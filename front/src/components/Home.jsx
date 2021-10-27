@@ -5,7 +5,7 @@ export default function Home(props) {
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:8000/products")
@@ -16,12 +16,37 @@ export default function Home(props) {
   console.log(`products`, products);
 
   const handleSearchSubmit = e => {
+    let searchRequest = {};
+    if (name) {
+      searchRequest.name = name;
+    }
+    if (city) {
+      searchRequest.city = city;
+    }
+    if (price) {
+    }
+
     e.preventDefault();
     fetch("http://localhost:8000/products", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       method: "POST",
+      body: JSON.stringify({
+        name: name ? name : "",
+        city: city ? city : "",
+        price: price ? price : 0,
+      }),
     })
-      .then(res => res.json())
-      .then(data => setProducts(data));
+      .then(res => {
+        console.log(`res`, res);
+        return res.json();
+      })
+      .then(data => {
+        console.log(`data`, data);
+        return setProducts(data);
+      });
   };
 
   return (
@@ -59,7 +84,7 @@ export default function Home(props) {
           <div className="col-3">
             <input
               className="form-control"
-              type="text"
+              type="number"
               name="price"
               placeholder="Enter your maximum price"
               value={price}
@@ -70,7 +95,7 @@ export default function Home(props) {
           <div className="col-2">
             <button
               className="btn btn-primary"
-              type="submit"
+              type="button"
               onClick={handleSearchSubmit}
             >
               Search
@@ -79,6 +104,7 @@ export default function Home(props) {
         </div>
       </form>
       <p>{products.length} produits en vente</p>
+
       <div className="d-flex justify-content-center">
         {products.length !== 0 &&
           products.map(product => <ProductCard product={product} />)}
