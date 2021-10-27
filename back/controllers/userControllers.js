@@ -45,7 +45,6 @@ const handleLogin = (req, res) => {
             password: req.body.password
         })
         .then(user => {
-
             res.status(200).json({
                 userId: user._id,
                 token: jwt.sign({
@@ -57,8 +56,8 @@ const handleLogin = (req, res) => {
         })
         .catch(err => {
             console.error(err)
-            res.status(500).json({
-                error: err
+            res.status(401).json({
+                error: "User not found"
             })
         })
 

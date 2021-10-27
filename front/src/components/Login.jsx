@@ -4,7 +4,6 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { email: "", password: "" };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     const apiUrl = "http://localhost:8000";
   }
