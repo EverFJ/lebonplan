@@ -1,26 +1,40 @@
 const mongoose = require("mongoose")
 const Product = require("../models/Product")
 
-const getSearchedProducts = (req, res) => {
-    let name = req.query.params.name ? req.query.params.name.toLowercase() : null
-    let city = req.query.params.city ? req.query.params.city.toLowercase() : null
-    let price = req.query.params.price ? parseInt(req.query.params.price) : null
-    Product.find({
-            name: name,
-            city: city,
-            price: {
-                $lte: price
-            }
+const getAllProducts = (req, res) => {
+    Product.find()
+        .then(products => {
+            res.status(200).json(products)
         })
+        .catch(err => {
+            console.error(err)
+            res.status(500).json({
+                error: err
+            })
+        })
+}
+
+const HandleSearchedProducts = (req, res) => {
+    let searchRequest = {}
+    if (req.body.name) {
+        searchRequest.name = req.body.name.toLowerCase()
+    }
+    if (req.body.city) {
+        searchRequest.city = req.body.city
+    }
+    if (req.body.price) {
+        {
+            $lte: req.body.price
+        }
+    }
+    Product.find(searchRequest)
         .then(products => {
             if (products.length === 0) {
                 res.status(200).json({
                     message: "No products matching your search"
                 })
             }
-            res.status(200).json({
-                products
-            })
+            res.status(200).json(products)
         })
         .catch(err => {
             console.error(err)
@@ -36,9 +50,7 @@ const getOneProduct = (req, res) => {
             _id: req.params.id
         })
         .then(product => {
-            res.status(200).json({
-                product
-            })
+            res.status(200).json(product)
         })
         .catch(err => {
             console.error(err)
@@ -58,9 +70,7 @@ const getProductsFromCity = (req, res) => {
                     message: "No products from " + req.params.city
                 })
             }
-            res.status(200).json({
-                products
-            })
+            res.status(200).json(products)
         })
         .catch(err => {
             console.error(err)
@@ -80,9 +90,7 @@ const getProductsFromName = (req, res) => {
                     message: "No products corresponding to " + req.params.name
                 })
             }
-            res.status(200).json({
-                products
-            })
+            res.status(200).json(products)
         })
         .catch(err => {
             console.error(err)
@@ -93,8 +101,9 @@ const getProductsFromName = (req, res) => {
 }
 
 module.exports = {
-    getSearchedProducts,
+    getAllProducts,
     getOneProduct,
     getProductsFromCity,
-    getProductsFromName
+    getProductsFromName,
+    HandleSearchedProducts
 }
