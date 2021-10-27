@@ -3,6 +3,7 @@ import React, { Component } from "react";
 export default class Login extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: "",
       password: "",
@@ -46,7 +47,7 @@ export default class Login extends Component {
               className="form-control"
               placeholder="Enter your email"
               value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
+              onChange={(e) => this.setState({ email: e.target.value })}
             />
           </div>
 
@@ -58,7 +59,7 @@ export default class Login extends Component {
               className="form-control"
               placeholder="Enter your password"
               value={this.state.password}
-              onChange={e => this.setState({ password: e.target.value })}
+              onChange={(e) => this.setState({ password: e.target.value })}
             />
           </div>
           <button type="submit" className="btn-cyan-900 btn-lg btn-block">
