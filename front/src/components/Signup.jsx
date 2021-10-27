@@ -10,6 +10,7 @@ export default class Signup extends Component {
           <div className="form-group firstName">
             <label>First name</label>
             <input
+              name="firstName"
               type="text"
               className="form-control"
               placeholder="First name"
@@ -18,12 +19,18 @@ export default class Signup extends Component {
 
           <div className="form-group surName">
             <label>Surname</label>
-            <input type="text" className="form-control" placeholder="Surname" />
+            <input
+              type="text"
+              className="form-control"
+              name="surName"
+              placeholder="Surname"
+            />
           </div>
 
           <div className="form-group userName">
             <label>Username</label>
             <input
+              name="userName"
               type="text"
               className="form-control"
               placeholder="Username"
@@ -33,6 +40,7 @@ export default class Signup extends Component {
           <div className="form-group userEmail">
             <label>Email</label>
             <input
+              name="email"
               type="email"
               className="form-control"
               placeholder="Enter your email"
@@ -42,9 +50,19 @@ export default class Signup extends Component {
           <div className="form-group userPassword">
             <label>Password</label>
             <input
+              name="password"
               type="password"
               className="form-control"
               placeholder="Enter your password"
+            />
+          </div>
+          <div className="form-group userPassword">
+            <label>Confirm password</label>
+            <input
+              name="confirmPassword"
+              type="password"
+              className="form-control"
+              placeholder="Confirm your password"
             />
           </div>
 
