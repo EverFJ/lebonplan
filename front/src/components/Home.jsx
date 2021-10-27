@@ -15,9 +15,16 @@ export default function Home(props) {
   console.log(`products`, products);
 
   const handleSearchSubmit = e => {
-    console.log(`name`, name);
-    console.log(`city`, city);
-    console.log(`price`, price);
+    let searchRequest = {};
+    if (name) {
+      searchRequest.name = name;
+    }
+    if (city) {
+      searchRequest.city = city;
+    }
+    if (price) {
+    }
+
     e.preventDefault();
     fetch("http://localhost:8000/products", {
       headers: {
