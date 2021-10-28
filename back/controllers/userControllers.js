@@ -1,4 +1,8 @@
 const mongoose = require("mongoose")
+const jwt = require("jsonwebtoken")
+const {
+    JWT_SECRET
+} = process.env
 const User = require("../models/User")
 
 const getUserPage = (req, res) => {
@@ -36,6 +40,26 @@ const handleSignup = (req, res) => {
         })
 }
 const handleLogin = (req, res) => {
+    User.findOne({
+            email: req.body.email,
+            password: req.body.password
+        })
+        .then(user => {
+            res.status(200).json({
+                userId: user._id,
+                token: jwt.sign({
+                    userId: user._id
+                }, JWT_SECRET, {
+                    expiresIn: "24h"
+                })
+            })
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(401).json({
+                error: "User not found"
+            })
+        })
 
 }
 
