@@ -28,6 +28,11 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/users/signup">
+                  Signup
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/users/login">
                   Login
                 </Link>
@@ -40,11 +45,6 @@ export default class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/admin">
                   Admin
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/users/signup">
-                  Signup
                 </Link>
               </li>
             </ul>

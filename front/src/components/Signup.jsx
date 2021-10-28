@@ -92,10 +92,14 @@ export default class Signup extends Component {
               }
             />
           </div>
-
-          <button type="submit" className="btn btn-cyan-900 btn-lg btn-block">
-            Register
-          </button>
+          <div class="d-grid gap-2 col-12 mx-auto">
+            <button
+              type="submit"
+              className="btn btn-outline-dark btn-lg btn-block button"
+            >
+              Register
+            </button>
+          </div>
         </form>
       </div>
       // Sofiane => Team Denicheurs / je pense a ajouter : si vous validez ;-)

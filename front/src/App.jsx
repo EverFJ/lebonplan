@@ -17,16 +17,23 @@ import "bootstrap/dist/css/bootstrap.css";
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/users/login" component={Login} />
-        <Route path="/users/signup" component={Signup} />
-        <Route path="/admin" component={Admin} />
-        <Route path="/users/:id" component={Profil} />
-        <Route path="/products/:id" component={ProductPage} />
-        <Route path="*" component={Error404} />
-      </Switch>
+      <div className="App">
+        <NavBar />
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <div className="outer">
+            <div className="inner">
+              <Route path="/users/signup" component={Signup} />
+              <Route path="/users/login" component={Login} />
+            </div>
+          </div>
+          <Route path="/admin" component={Admin} />
+          <Route path="/users/:id" component={Profil} />
+          <Route path="/products/:id" component={ProductPage} />
+          <Route path="*" component={Error404} />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
