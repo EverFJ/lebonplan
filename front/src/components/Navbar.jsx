@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-cyan">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Le Bon Plan
@@ -28,6 +28,11 @@ export default class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/users/signup">
+                  Signup
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/users/login">
                   Login
                 </Link>
@@ -40,11 +45,6 @@ export default class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/admin">
                   Admin
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/users/signup">
-                  Signup
                 </Link>
               </li>
             </ul>
