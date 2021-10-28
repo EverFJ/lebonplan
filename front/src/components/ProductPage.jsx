@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 export default function ProductPage(props) {
   const [product, setProduct] = useState([]);
+  const apiUrl = "http://localhost:8000";
+  const id = props.match.params.id;
 
   useEffect(() => {
-    const id = props.match.params.id;
-    fetch("http://localhost:8000/products/" + id)
+    fetch(apiUrl + "/products/" + id)
       .then(res => res.json())
       .then(data => setProduct(data));
   }, []);
   console.log(`product`, product);
   const { name, description, price, sellerUsername, city, image } = product;
-  const apiUrl = "http://localhost:8000";
 
   return (
     <div className="container">

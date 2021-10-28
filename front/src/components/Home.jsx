@@ -6,16 +6,15 @@ export default function Home(props) {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
+  const apiUrl = "http://localhost:8000";
 
   useEffect(() => {
-    fetch("http://localhost:8000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    fetch(apiUrl + "/products")
+      .then(res => res.json())
+      .then(data => setProducts(data));
   }, []);
 
-  console.log(`products`, products);
-
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = e => {
     e.preventDefault();
     fetch("http://localhost:8000/products", {
       headers: {
@@ -29,11 +28,11 @@ export default function Home(props) {
         price: price ? price : 0,
       }),
     })
-      .then((res) => {
+      .then(res => {
         console.log(`res`, res);
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         console.log(`data`, data);
         return setProducts(data);
       });
@@ -50,7 +49,7 @@ export default function Home(props) {
               name="name"
               placeholder="Search for a particular product"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
             />
             {/* <label className="form-label">Product</label> */}
           </div>
@@ -60,7 +59,7 @@ export default function Home(props) {
               aria-label="select your city"
               name="city"
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={e => setCity(e.target.value)}
             >
               <option value="" disabled>
                 Select your city
@@ -78,7 +77,7 @@ export default function Home(props) {
               name="price"
               placeholder="Enter your maximum price"
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={e => setPrice(e.target.value)}
             />
             {/* <label className="form-label">Price</label> */}
           </div>
@@ -98,7 +97,7 @@ export default function Home(props) {
           <p>{products.length} produits en vente</p>
           <div className="d-flex justify-content-center">
             {products.length !== 0 &&
-              products.map((product) => <ProductCard product={product} />)}
+              products.map(product => <ProductCard product={product} />)}
           </div>
         </>
       )}

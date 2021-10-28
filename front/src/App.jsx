@@ -12,28 +12,26 @@ import ProductPage from "./components/ProductPage";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <NavBar />
+      {/* <div className="App"> */}
+      <NavBar />
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <div className="outer">
-            <div className="inner">
-              <Route path="/users/signup" component={Signup} />
-              <Route path="/users/login" component={Login} />
-            </div>
-          </div>
-          <Route path="/admin" component={Admin} />
-          <Route path="/users/:id" component={Profil} />
-          <Route path="/products/:id" component={ProductPage} />
-          <Route path="*" component={Error404} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        {/* <div className="outer">
+            <div className="inner"> */}
+        <Route path="/users/signup" component={Signup} />
+        <Route path="/users/login" component={Login} />
+        {/* </div>
+          </div> */}
+        <Route path="/admin" component={Admin} />
+        <Route path="/users/:id" component={Profil} />
+        <Route path="/products/:id" component={ProductPage} />
+        <Route path="*" component={Error404} />
+      </Switch>
+      {/* </div> */}
     </BrowserRouter>
   );
 }
