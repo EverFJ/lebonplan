@@ -28,48 +28,52 @@ export default class Login extends Component {
         password: this.state.password,
       }),
     })
-      .then(res => res.json())
-      .then(data => this.setState({ user: { data } }))
-      .catch(err => console.error(err));
+      .then((res) => res.json())
+      .then((data) => this.setState({ user: { data } }))
+      .catch((err) => console.error(err));
   }
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <h1>Login</h1>
+      <div className="outer">
+        <div className="inner">
+          <div className="Login">
+            <form onSubmit={this.handleSubmit}>
+              <h1>Login</h1>
 
-          <div className="form-group">
-            <label>Email adress</label>
-            <input
-              name="email"
-              type="email"
-              className="form-control"
-              placeholder="Enter your email"
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
-            />
+              <div className="form-group">
+                <label>Email adress</label>
+                <input
+                  name="email"
+                  type="email"
+                  className="form-control"
+                  placeholder="Enter your email"
+                  value={this.state.email}
+                  onChange={(e) => this.setState({ email: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  placeholder="Enter your password"
+                  value={this.state.password}
+                  onChange={(e) => this.setState({ password: e.target.value })}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-dark btn-expend-lg btn-block"
+              >
+                Login
+              </button>
+            </form>
           </div>
-
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              className="form-control"
-              placeholder="Enter your password"
-              value={this.state.password}
-              onChange={(e) => this.setState({ password: e.target.value })}
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="btn btn-dark btn-expend-lg btn-block"
-          >
-            Login
-          </button>
-        </form>
+        </div>
       </div>
 
       // Sofiane => Team Denicheurs / je pense a ajouter : si vous validez ;-)
