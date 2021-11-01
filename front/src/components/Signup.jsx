@@ -94,10 +94,10 @@ export default class Signup extends Component {
                   }
                 />
               </div>
-              <div class="d-grid gap-2 col-12 mx-auto">
+              <div className="button-forms d-grid gap-2 col-12 mx-auto">
                 <button
                   type="submit"
-                  className="btn btn-outline-dark btn-lg btn-block button"
+                  className="btn btn-outline-dark btn-extend-lg btn-block"
                 >
                   Register
                 </button>
