@@ -66,6 +66,10 @@ body {
   /* background: linear-gradient(to bottom, #f64fc4, #c05f9b, #853365); */
 }
 
+nav {
+  color: #33c7ca !important;
+}
+
 body,
 html,
 .App,
