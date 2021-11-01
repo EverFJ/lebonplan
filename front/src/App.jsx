@@ -9,7 +9,6 @@ import Profil from "./components/Profil";
 import Signup from "./components/Signup";
 import Error404 from "./components/Error404";
 import ProductPage from "./components/ProductPage";
-
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
