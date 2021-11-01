@@ -53,6 +53,10 @@
 
 /* Styling by Sofiane*/
 
+/* ===== fonts used : Righteous and Sarabun ===== */
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Sarabun:wght@300&display=swap");
+
+/* ===== App Le Bon Plan ====== */
 * {
   box-sizing: border-box;
 }
@@ -61,13 +65,9 @@ body {
   display: flex;
   min-height: 100vh;
   font-weight: 400;
-  font-family: sans-serif;
+  font-family: "Sarabun", sans-serif;
   background: #f59b14;
   /* background: linear-gradient(to bottom, #f64fc4, #c05f9b, #853365); */
-}
-
-nav {
-  color: #33c7ca !important;
 }
 
 body,
@@ -80,6 +80,15 @@ html,
   background-color: #f59b14;
 }
 
+/* ===== Brand ===== */
+.brand {
+  font-family: "Righteous", sans-serif;
+  font-size: 1.8rem !important;
+  /* font-weight: 700; */
+  color: #33c7ca !important;
+}
+
+/* ===== Forms ===== */
 .outer {
   display: flex;
   justify-content: center;
@@ -95,6 +104,7 @@ html,
 }
 
 .outer h1 {
+  /* font-family: "Righteous"; */
   color: #f59b14;
   margin: 0;
   padding-bottom: 20px;
@@ -124,7 +134,7 @@ label {
   color: #f59b14;
   font-weight: 500;
 }
-
+/* ===== Button ===== */
 .button-forms {
   margin-top: 30px;
   width: 100%;
