@@ -14,9 +14,6 @@ const adminRoutes = require("./routes/admin")
 const usersRoutes = require("./routes/users")
 const path = require("path")
 
-const userModel = require("./models/User");
-const productModel = require('./models/Product');
-
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({
